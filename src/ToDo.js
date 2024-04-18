@@ -4,7 +4,7 @@ import "./App.css";
 export default function ToDo() {
   const [searchBar, setSearchBar] = useState("");
 
-  const [listItem, setListItem] = useState(["hello"]);
+  const [listItem, setListItem] = useState(["hello", "he", "hey"]);
 
   function updateSearchBar(searchData) {
     setSearchBar(searchData.target.value);
@@ -12,9 +12,8 @@ export default function ToDo() {
 
   function updateListItems(event) {
     event.preventDefault();
-    let oldList = listItem;
-    setListItem([oldList, searchBar]);
-    console.log(listItem.push(searchBar));
+    setListItem([listItem, searchBar]);
+    console.log(listItem);
   }
 
   return (
@@ -32,7 +31,7 @@ export default function ToDo() {
             onClick={updateListItems}
           />
         </form>
-        <div className="border border-gray w-100 rounded p-3">{listItem}</div>
+        <div className="border border-gray w-100 rounded p-3"></div>
       </div>
     </div>
   );
