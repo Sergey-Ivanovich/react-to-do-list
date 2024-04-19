@@ -2,36 +2,42 @@ import React, { useState } from "react";
 import "./App.css";
 
 export default function ToDo() {
-  const [searchBar, setSearchBar] = useState("");
+  const [searchBar, SetSearchBar] = useState("");
+  const [toDoItems, setToDoItems] = useState([""]);
 
-  const [listItem, setListItem] = useState(["hello", "he", "hey"]);
-
-  function updateSearchBar(searchData) {
-    setSearchBar(searchData.target.value);
+  function refreshSearchBar(event) {
+    SetSearchBar(event.target.value);
   }
 
-  function updateListItems(event) {
+  function enterSearch(event) {
     event.preventDefault();
-    setListItem([listItem, searchBar]);
-    console.log(listItem);
+    let itemMemory = toDoItems.concat(searchBar);
+    console.log(itemMemory);
+    setToDoItems(itemMemory);
   }
 
   return (
     <div className="ToDo container">
       <div className="w-50 d-block m-auto">
-        <form className="text-center mt-4 mb-2">
+        <form className="text-center mt-4 mb-2 d-flex">
           <input
-            onChange={updateSearchBar}
             type="text"
+            onChange={refreshSearchBar}
             className="btn border border-gray text-start w-75"
           />
           <input
             type="Submit"
             className="btn btn-primary w-25"
-            onClick={updateListItems}
+            onClick={enterSearch}
           />
         </form>
-        <div className="border border-gray w-100 rounded p-3"></div>
+        <div className="border border-gray w-100 rounded p-3">
+          <ul>
+            {toDoItems.map(function (oneItem) {
+              return <li>{oneItem}</li>;
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );
