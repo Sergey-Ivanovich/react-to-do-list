@@ -25,7 +25,7 @@ export default function ToDo() {
     setToDoItems(activeItems);
   }
 
-  if (toDoItems === null) {
+  if (toDoItems.length >= 1) {
     return (
       <div className="ToDo container">
         <div className="w-50 d-block m-auto">
@@ -64,6 +64,7 @@ export default function ToDo() {
     return (
       <div className="ToDo container">
         <div className="w-50 d-block m-auto">
+          <h1 className="text-center mt-5">React To-Do List</h1>
           <form className="text-center mt-4 mb-2 d-flex">
             <input
               type="text"
@@ -77,8 +78,8 @@ export default function ToDo() {
             />
           </form>
         </div>
-        <div className="border border-gray w-100 rounded p-1 pt-3">
-          <h3 className="text-opacity-50">List Is Empty</h3>
+        <div className="border border-gray w-50 rounded p-1 pt-3 m-auto">
+          <h3 className="opacity-50 text-center">List Is Empty</h3>
         </div>
       </div>
     );

@@ -3,3 +3,8 @@ ul button {
   border: none;
   background-color: transparent;
 }
+
+.hide {
+  transition: all 200ms ease-in-out;
+  opacity: 0;
+}
