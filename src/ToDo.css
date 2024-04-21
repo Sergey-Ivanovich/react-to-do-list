@@ -8,3 +8,7 @@ ul button {
   transition: all 200ms ease-in-out;
   opacity: 0;
 }
+
+li button:hover {
+  text-decoration: line-through;
+}

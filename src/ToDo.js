@@ -4,7 +4,7 @@ import "./App.css";
 
 export default function ToDo() {
   const [searchBar, SetSearchBar] = useState("");
-  const [toDoItems, setToDoItems] = useState(["hello"]);
+  const [toDoItems, setToDoItems] = useState([null]);
 
   function refreshSearchBar(event) {
     SetSearchBar(event.target.value);
@@ -22,10 +22,17 @@ export default function ToDo() {
   function removeListItem(index) {
     let activeItems = toDoItems;
     activeItems.splice(index, 1);
+
     setToDoItems(activeItems);
   }
 
-  if (toDoItems.length >= 1) {
+  function displayData() {
+    console.log(toDoItems);
+  }
+
+  setInterval(displayData, 4000);
+
+  if (toDoItems.length > 1) {
     return (
       <div className="ToDo container">
         <div className="w-50 d-block m-auto">
@@ -49,11 +56,15 @@ export default function ToDo() {
                   removeListItem(index);
                 }
 
-                return (
-                  <li key={index}>
-                    <button onClick={exportData}>{oneItem}</button>
-                  </li>
-                );
+                if (oneItem != null) {
+                  return (
+                    <li key={index}>
+                      <button onClick={exportData}>{oneItem}</button>
+                    </li>
+                  );
+                } else {
+                  return null;
+                }
               })}
             </ul>
           </div>
